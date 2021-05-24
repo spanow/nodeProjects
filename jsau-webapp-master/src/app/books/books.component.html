@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste des Livres</div>
+    <div class="panel-body">
+      <button class="btn btn-primary " (click)="onGetBooks()">Livres</button>
+    </div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+        <div class="form-group">
+          <label>
+            Genre :
+            <input type="text" name="keyword" ngModel>
+            <span>&nbsp;</span>
+            <button type="submit" class="btn-primary"> <span class="glyphicon glyphicon-search"></span>Chercher</button>
+          </label>
+        </div>
+      </form>
+      <table *ngIf="books" class="table table-hover">
+        <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Auteur</th>
+          <th>Prix</th>
+          <th>Genre</th>
+          <th>Quantité</th>
+          <th>Disponibilité</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let m of books">
+          <td>{{m.title}}</td>
+          <td>{{m.author}}</td>
+          <td>{{m.price}}</td>
+          <td>{{m.genre}}</td>
+          <td>{{m.quantity}}</td>
+          <td>{{m.available? 'Oui':'Non'}}</td>
+          <td><a class="btn btn-primary" (click)="onEditeBook(m)">Modifier</a></td>
+          <td><a class="btn btn-danger" (click)="onDeleteBook(m)">Supprimer</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

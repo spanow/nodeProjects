@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Ajouter un livre</div>
+    <div class="panel-body" *ngIf="mode==0">
+      <form #f="ngForm" (ngSubmit)="onSaveBook(f.value)">
+        <div class="form-group">
+          <label class="control-label">Titre</label>
+          <input class="form-control" type="text" name="title" ngModel required>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Auteur</label>
+          <input class="form-control" type="text" name="author" ngModel required>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Prix</label>
+          <input class="form-control" type="number" name="price" ngModel required>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Genre</label>
+          <input class="form-control" type="text" name="genre" ngModel required>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Quantité</label>
+          <input class="form-control" type="number" name="quantity" ngModel="" >
+        </div>
+        <div class="form-group">
+          <label class="control-label">Disponibilté</label>
+          <br>
+          <input type="checkbox" aria-label="..." name="available">
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="f.invalid"><span class="glyphicon glyphicon-save" ></span>Sauvegardé</button>
+      </form>
+    </div>
+  </div>
+  <div class="panel-body" *ngIf="mode==1">
+    <div class="form-group">
+      <div class="form-group">
+        <label>Titre: </label>
+        <label>{{book.title}}</label>
+      </div>
+      <div class="form-group">
+        <label>Auteur : </label>
+        <label>{{book.author}}</label>
+      </div>
+      <div class="form-group">
+        <label>Prix: </label>
+        <label>{{book.price}}</label>
+      </div>
+      <div class="form-group">
+        <label>Genre: </label>
+        <label>{{book.genre}}</label>
+      </div>
+      <div class="form-group">
+        <label>Quantité: </label>
+        <label>{{book.quantity}}</label>
+      </div>
+      <div class="form-group">
+        <label>Disponibilité: </label>
+        <label>{{book.available? 'Non':'Oui'}}</label>
+      </div>
+      <button class="btn btn-default" ><a class="nav-link" href="http://localhost:4200/newBooks">Retour</a></button>
+    </div>
+  </div>
+</div>
